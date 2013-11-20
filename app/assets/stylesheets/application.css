@@ -1,0 +1,60 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+	font-family: sans-serif;
+  padding: 30px;
+}
+.button {
+  background-color: rgb(68,119,187);
+}
+h3 {
+	color: rgb(68,119,187);
+	font-weight: 200;
+}
+h4 {
+	font-weight: 200;
+}
+.jumbotron {
+	background-color: rgb(68,119,187);
+	height: 80;
+	padding: 10px;
+	width: 300;
+}
+.small_font {
+  font-size: 8pt;
+	color: white;
+}
+.submit_tag {
+  background-color: rgb(68,119,187);
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #EAF4FF;
+}
+.top-bar {
+  background-color: rgb(68,119,187);
+  color: white;
+  height: 70;
+}
+.top-bar-logo {
+  padding: 0px;
+}
+.top-bar-middle {
+  font-size: 14pt;
+	color: white;
+}
+th {
+	background-color: rgb(68,119,187);
+}

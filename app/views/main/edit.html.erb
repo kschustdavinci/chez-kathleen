@@ -1,0 +1,75 @@
+<% if @org.id == nil %>
+	<% post_route = "/new_org" %>
+<% else %>
+  <% post_route = "/orgs/#{@org.org_name}" %>
+<% end %>
+<%= form_tag post_route do %>
+
+
+	<%= error_messages_for @org %>
+
+	<div class='top-bar'>
+	  <div class='row'>
+	    <div class='col-sm-2'>
+	      <div class='top-bar-logo'><%= image_tag("id-w3-sitemark-large.gif", alt: "w3_icon", width: '266', height: '70') %>
+				</div>
+	    </div>
+	    <div class='col-sm-4 top-bar-middle'>
+				<div class="small_font">Welcome <%= session[:user_name]%> |
+					<u class="small_font">Preferences</u> | 
+					<u><a class="small_font" href="/logout">Sign out</a></u>
+				</div>
+					<p> </p>
+					<p> </p>
+	        <p>MSSD Account Page (MAP)</p>
+	    </div>
+		</div>
+	</div>
+
+	<div class='container'>
+		<div class='col-sm-6'>
+			<h3>Organization Details</h3>
+			<hr>
+			<table border+"1" class="table table-striped">
+				<tr>
+					<th colspan="2"><center>Organization Record</center></th>
+				</tr>
+				<tr>
+					<td><%= label_tag "status", "Status" %></td>
+					<td><%= select_tag "status", options_for_select(
+								["open", "closed"], @org.org_status),
+								prompt: "Choose status" %>
+					</td>
+				</tr>
+				<tr>
+					<td><%= label_tag "name", "Name" %></td>
+					<td><%= text_field_tag "name", @org.org_name %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag "ecm_acct_id", "ECM ID" %></td>
+					<td><%= text_field_tag "ecm_acct_id", @org.org_ecm_account_id %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag "ecm_acct_name", "ECM_Name" %></td>
+					<td><%= text_field_tag "ecm_acct_name", @org.org_ecm_account_name %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag "ecm_acct_type", "ECM_Type" %></td>
+					<td><%= select_tag "ecm_acct_type", options_for_select(
+								[["CHIP","chip"],["pseudoCHIP","pseudochip"],["EMEA Business Partner","bp_id"]], 
+								@org.org_ecm_account_type), prompt: "Choose ECM Account Type" %>
+				</tr>
+				<tr>
+					<td><%= label_tag "industry" %></td>
+					<td><%= select_tag "industry", options_from_collection_for_select(
+								DimCommIndustry.order("ind_section_short_name ASC, ind_division_short_name ASC"),
+								:id, :ind_composite_short_name, @org.org_industry_id),
+								prompt: "Choose industry" %>
+					</td>
+				</tr>
+			</table>
+			<p><%= submit_tag "Add/Update organization", class: "button" %></p>
+		</div>
+	</div>
+
+<% end %>

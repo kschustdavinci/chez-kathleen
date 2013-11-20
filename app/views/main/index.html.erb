@@ -1,0 +1,59 @@
+<%= form_tag "/index" do %>
+
+	<div class='top-bar'>
+	  <div class='row'>
+	    <div class='col-sm-2'>
+	      <div class='top-bar-logo'><%= image_tag("id-w3-sitemark-large.gif", alt: "w3_icon", width: '266', height: '70') %>
+				</div>
+	    </div>
+	    <div class='col-sm-4 top-bar-middle'>
+				<div class="small_font">Welcome <%= session[:user_name]%> |
+					<u class="small_font">Preferences</u> | 
+					<u><a class="small_font" href="/logout">Sign out</a></u>
+				</div>
+					<p> </p>
+					<p> </p>
+	        <p>MSSD Account Page (MAP)</p>
+	    </div>
+		</div>
+	</div>	
+	<div class='container'>
+		<h3>Starting Points</h3>
+		<hr>
+	</div>
+	<div class='container'>
+		<h4>Search:</h4>
+	</div>
+	<div class='container'>
+		<div class="jumbotron col-sm-4">
+			<div class="btn-group">
+		    <%= select_tag "search_type", options_for_select(
+					["Organization by name", "Organization by industry",
+					 "Organization by service", "Device by hostname",
+					 "Device by organization", "Service by name",
+					 "Service by organization"]),
+					 prompt: "Choose search type" 
+				%>
+			</div>
+			<div>
+				<input type="text" class="form-control" placeholder="Like:">
+			</div>
+		</div>
+	</div>
+	<div class='container'>
+		<ul>
+			<% DimCommOrg.order(:org_name).each do |org| %>
+				<li>
+					<a href="/orgs/<%= org.org_name %>">
+						<%= org.org_name %>
+					</a>
+				</li>
+			<% end %>
+		</ul>
+		<button>
+			<a href="/new_org">Add new org
+			</a>
+		</button>
+	</div>
+
+<% end %>

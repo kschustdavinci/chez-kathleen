@@ -1,0 +1,8 @@
+class DimCommIndustry <ActiveRecord::Base
+  self.primary_key = "industry_id"
+	
+	def ind_composite_short_name
+	   "#{ind_section_short_name} | #{ind_division_short_name}"
+	end
+end
+

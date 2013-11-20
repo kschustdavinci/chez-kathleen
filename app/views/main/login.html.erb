@@ -1,0 +1,45 @@
+<%= form_tag "/login" do %>
+
+	<div class='top-bar'>
+	  <div class='row'>
+	    <div class='col-sm-2'>
+	      <div class='top-bar-logo'><%= image_tag("id-w3-sitemark-large.gif", alt: "w3_icon", width: '266', height: '70') %>
+				</div>
+	    </div>
+	    <div class='col-sm-4 top-bar-middle'>
+					<p> </p>
+					<p> </p>
+	        <p>MSSD Account Page (MAP)</p>
+	    </div>
+		</div>
+	</div>	
+	<div class='container'>
+		<h3>Login</h3>
+		<hr>
+	</div>
+	<div class='container'>
+		<h4>Enter login information:</h4>
+	</div>
+	<div class='container'>
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label for="userid" class="col-sm-2 control-label">Intranet userID:</label>
+		    <div class="col-sm-10">
+		      <%= text_field_tag "userid", @user.userid %>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="password" class="col-sm-2 control-label">Password:</label>
+		    <div class="col-sm-10">
+		      <%= password_field_tag "password", "" %>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <%= submit_tag "Login" %>
+		    </div>
+		  </div>
+		</form>
+	</div>
+
+<% end %>
